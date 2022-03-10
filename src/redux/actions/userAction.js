@@ -1,4 +1,4 @@
-import { USER_AUTH, USER_ROLE } from "../constants/constants"
+import { USER_AUTH} from "../constants/constants"
 
 export const userAction = (payload)=>{
     return {

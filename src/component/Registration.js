@@ -1,9 +1,4 @@
 import React, { useState } from "react";
-import { HiOutlineMail } from "react-icons/hi";
-import { BsPersonCircle } from "react-icons/bs";
-
-
-import { RiLockPasswordFill } from "react-icons/ri";
 import { useHistory } from "react-router-dom";
 // import signup from "../images/signin.png";
 
@@ -49,7 +44,7 @@ function Registration() {
       <section className="signup">
         <div className="container1 mt-5">
           <div className="signup-content">
-            <div className="signup-form">
+            <div className="signup-form regcontent" >
               <h2 className="form-title">New User Registration</h2>
               <form
                 method="POST"
@@ -59,8 +54,6 @@ function Registration() {
               >
                 <div className="form-group">
                   <label htmlFor="name">
-                  <BsPersonCircle/>
-                    
                   </label>
                   <input
                     onChange={handleChange}
@@ -73,7 +66,6 @@ function Registration() {
                 </div>
                 <div className="form-group">
                   <label htmlFor="email">
-                  <HiOutlineMail/>
                   </label>
                   <input
                     onChange={handleChange}
@@ -86,7 +78,6 @@ function Registration() {
                 </div>
                 <div className="form-group">
                   <label htmlFor="password">
-                  <RiLockPasswordFill/>
                   </label>
                   <input
                     onChange={handleChange}
@@ -113,12 +104,6 @@ function Registration() {
                 </div>
               </form>
             </div>
-
-            {/* <div className="signup-image">
-              <figure>
-                <img src={signup} alt="registration pic" />
-              </figure>
-            </div> */}
           </div>
         </div>
       </section>

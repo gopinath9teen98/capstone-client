@@ -6,9 +6,11 @@ import {  NavLink } from "react-router-dom";
 const adminNav = [
   { name: "Home", path: "/home" },
   { name: "Users", path: "/details" },
-  { name: "Create sample", path: "/sample" },
+  // { name: "Create sample", path: "/sample" },
   { name: "New registration", path: "/register" },
+  { name: "Edit User Details", path: "/RegData" },
   { name: "logout", path: "/logout" },
+
 ];
 
 const userNav = [
@@ -35,14 +37,14 @@ function Navbar() {
 
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav">
-              {navbar?.map((val) => (
-                <>
-                  <li className="nav-item">
+              {navbar?.map((val,ind) => (
+                
+                  <li key={ind} className="nav-item">
                     <NavLink className="nav-link" to={val.path}>
                       {val.name}
                     </NavLink>
                   </li>
-                </>
+                
               ))}
             </ul>
           </div>

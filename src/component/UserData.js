@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import Report2 from "./CustomComp/Report2";
@@ -6,7 +8,6 @@ import Report3 from "./CustomComp/Report3";
 import { useDispatch, useSelector } from "react-redux";
 import { userAction } from "../redux/actions/userAction";
 import Report1 from "./CustomComp/Report1";
-// import { RiContactsBookUploadLine } from "react-icons/ri";
 import { Button,FormControl, Table } from "react-bootstrap";
 
 function UserData() {
@@ -14,26 +15,14 @@ function UserData() {
   const [openModal, setopenModal] = useState(false);
   const [openModal1, setopenModal1] = useState(false);
   const [openModal2, setopenModal2] = useState(false);
-  const [searchval, setsearchval] = useState("")
-
-
-  // const [userData1, setuserData1] = useState([]);
-  // const [editableData, seteditableData] = useState({});
-  // const [showEditData, setshowEditData] = useState(false);
-
-
+  const [searchval, setsearchval] = useState("");
   const [close, setclose] = useState(true);
   const [selectedUser, setSelectedUser] = useState([]);
   const date = new Date();
-  // const cDate = date.getFullYear();
+
   const dispatch = useDispatch();
 
   const isLogin = useSelector((state) => state.isAuth);
-
-  // const handleShow=(data)=>{
-  //   seteditableData(data);
-  //   setshowEditData(true)
-  // }
 
   const callUserPage = async () => {
     try {
@@ -48,6 +37,7 @@ function UserData() {
       const data = await res.json();
       console.log(data);
       setuserData([...data]);
+     
       if (!res.status === 200) {
         const error = new Error(res.error);
         throw error;
@@ -65,14 +55,11 @@ function UserData() {
   useEffect(() => {
     console.log(selectedUser, "selectedUser");
   }, [selectedUser]);
- 
-  
-
 
   return (
     <div>
       <div className="searchbar">
-      <p>Search User:</p> <FormControl type="search" placeholder="search" onChange={(e)=>{setsearchval(e.target.value)}} />
+      <p>Search User:</p> <FormControl type="search" placeholder="search" onChange={(e)=>{setsearchval(e.target.value)}}/>
           </div>
         <div className="tablecontainer">
       <form methods="GET">
@@ -81,7 +68,7 @@ function UserData() {
           
           <thead style={{backgroundColor:'lightblue'}}>
             <tr>
-              <th scope="col">User ID</th>
+              <th>User ID</th>
               <th scope="col">Email</th>
               <th>Name</th>
               <th scope="col">Haematology</th>
@@ -91,17 +78,17 @@ function UserData() {
           </thead>
 
           {isLogin && (
+            <tbody>
+
             <>
               {userData.filter((item)=>
                 item.name.includes(searchval.toLowerCase())
               ).map((val) => {
                 return (
-                  <tr key={val._id}>
+                    <tr key={val._id}>
                     <td>{val._id}</td>
-                    <td> {val.email} </td>
-                    <td> {val.name}</td>
-                    {/* <td><button className="btn btn-primary" onClick={()=>{handleShow(val)}}>Edit</button></td> */}
-
+                    <td>{val.email} </td>
+                    <td>{val.name}</td>
                     <td>
                       {" "}
                       <Button
@@ -111,10 +98,9 @@ function UserData() {
                           setSelectedUser(val);
                         }}
                         style={{ color: "black" }}
-                        variant= { val?.heamatology ? "primary" : "danger"}
-
+                        variant= {val?.heamatology ? "primary" : "danger"}
                         disabled={!val?.heamatology}
-                      >
+                      >  
                         {val?.heamatology ? "view Details" : "N/A"}
                       </Button>{" "}
                     </td>
@@ -125,7 +111,6 @@ function UserData() {
 
                           setopenModal1(true);
                           console.log(val);
-                          console.log(val, "---------> ssss");
                           setSelectedUser(val);
                         }}
                         style={{ color: "black" }}
@@ -136,34 +121,19 @@ function UserData() {
                         {val?.thyroid ? "view Details" : "N/A"}
                       </Button>{" "}
                     </td>
-                    <td>
-                      <Button
-                        onClick={(e) => {
-                          e.preventDefault();
-
-                          setopenModal2(true);
-                          console.log(val);
-                          console.log(val, "--------->");
-                          setSelectedUser(val);
-                        }}
-                        style={{ color: "black" }}
-                        variant= { val?.glucometry ? "primary" : "danger"}
-
-                        disabled={!val?.glucometry}
-                      >
-                        {val?.glucometry ? "view Details" : "N/A"}
-                      </Button>
+                    <td><Button onClick={(e) => {e.preventDefault(); setopenModal2(true); console.log(val); setSelectedUser(val);}} style={{ color: "black" }} variant= { val?.glucometry ? "primary" : "danger"} disabled={!val?.glucometry}>{val?.glucometry ? "view Details" : "N/A"}</Button>
                     </td>
                   </tr>
                 );
-              })}{" "}
+              })} 
+
             </>
+            </tbody>
           )}
         </Table>
       </form>
       </div>
-      <Report1
-        Backdrop={close}
+      <Report1 
         userData={selectedUser}
         open={openModal}
         setopenModal={setopenModal}
@@ -172,7 +142,6 @@ function UserData() {
         }}
       />
       <Report2
-        Backdrop={close}
         userData={selectedUser}
         open={openModal1}
         setopenModal={setopenModal1}
@@ -181,7 +150,6 @@ function UserData() {
         }}
       />
            <Report3
-        Backdrop={close}
         userData={selectedUser}
         open={openModal2}
         setopenModal={setopenModal2}

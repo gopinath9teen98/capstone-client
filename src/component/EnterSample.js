@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Col, FloatingLabel, Form, Modal, Row } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
@@ -34,9 +36,6 @@ const EnterSample = () => {
   const [openModal, setopenModal] = useState(false);
   const [currentId, setCurrentId] = useState("");
   const [currentData, setCurrentData] = useState([]);
-  // const [hemo, setHemo] = useState(false);
-  // const [thyr, setThyr] = useState(false);
-  // const [glu, setglu] = useState(false);
 
   const history = useHistory();
 

@@ -31,11 +31,29 @@ home Page */
   margin-left: 750px;
   margin-top: 30px;
 }
+tr,td,th,thead{
+  padding: 5px !important;
+}
+thead{
+  background-color: #3675ff !important;
+  color: #e7e5e5 !important;
+}
+table{
+  border: 3px solid #3675ff !important;
+}
 
 .content{
   margin-left: 80px !important;
   width: 600px !important;
   
+  padding: 40px;
+  border-radius: 30px;
+  background-color: #fff;
+
+}
+.regcontent{
+  margin-left: 80px !important;
+  width: 600px !important;
   padding: 40px;
   border-radius: 30px;
   background-color: #fff;
@@ -154,7 +172,6 @@ body {
 .signin-image {
   width: 50%;
   overflow: hidden;
-  /* margin-left: 50px; */
 }
 
 .signup-image {

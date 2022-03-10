@@ -1,12 +1,11 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-useless-escape */
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { useHistory } from "react-router-dom";
-// import loginpic from "../images/login.jpg";
-
-import { HiOutlineMail } from "react-icons/hi";
-import { RiLockPasswordFill } from "react-icons/ri";
-import { Provider, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { userAction } from "../redux/actions/userAction";
+// import axios from "axios";
 
 function Login(event) {
   let  isValid;
@@ -16,14 +15,11 @@ function Login(event) {
   const [password, setpassword] = useState("");
   console.log(email, password);
 
-//////////
-const [isEmailValid, setisEmailValid] = useState(false);
+ const [isEmailValid, setisEmailValid] = useState(false);
  const [emailError, setemailError] = useState("");
 
   const [isPasswordValid, setisPasswordValid] = useState(false);
   const [passwordError, setpasswordError] = useState("");
-////////
-
 
   const history = useHistory()
   const dispatch = useDispatch()
@@ -32,7 +28,7 @@ const [isEmailValid, setisEmailValid] = useState(false);
   const loginCall = async ()=>{
     console.log("login call==============")
     const res = await fetch("/login", {
-      method: "POST",
+      method:"POST",
       headers: {
         "content-Type": "application/json",
       },
@@ -41,11 +37,10 @@ const [isEmailValid, setisEmailValid] = useState(false);
     const data = await res.json();
 
     if (res.status === 200) {
-      console.log("loginnnnn",res,data)
+      console.log("login",res,data)
       localStorage.setItem("role", data.role.toLowerCase());
-      alert("Login successful");
       dispatch(userAction(true))
-      history.push("/details", { replace: true });
+      history.push("/home", { replace: true });
     } else {
       alert("Invalid credentials");
     }

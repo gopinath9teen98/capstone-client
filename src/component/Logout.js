@@ -32,7 +32,7 @@ function Logout() {
 
   return (
     <div>
-      <h1>Looading... </h1>
+      <h1>Loading... </h1>
     </div>
   );
 }

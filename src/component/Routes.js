@@ -9,6 +9,7 @@ import Home from "./Home";
 import Login from "./Login";
 import Logout from "./Logout";
 import Navbar from "./Navbar";
+import RegData from "./RegData";
 import Registration from "./Registration";
 import UserData from "./UserData";
 
@@ -18,7 +19,7 @@ function Routes() {
   const isLogin = useSelector((state) => state.isAuth);
 
   useEffect(async () => {
-    const role = await localStorage.getItem("role");
+    const role = localStorage.getItem("role");
 
 
     if (role) {
@@ -49,6 +50,9 @@ function Routes() {
 
             <Route exact path="/details">
               <UserData />
+            </Route>
+            <Route exact path="/RegData">
+              <RegData />
             </Route>
             <Route exact path="/logout">
               <Logout />
